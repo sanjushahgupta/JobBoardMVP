@@ -5,7 +5,6 @@ import (
 	"firstattemp/Dbconnect"
 	"firstattemp/Model"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 
 	"github.com/google/uuid"
