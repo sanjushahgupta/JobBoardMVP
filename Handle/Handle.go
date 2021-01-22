@@ -59,27 +59,27 @@ func Listbyid(w http.ResponseWriter, r *http.Request) {
 // 	json.NewEncoder(w).Encode(ss)
 // }
 
-func Update(w http.ResponseWriter, r *http.Request) {
-	eventID := mux.Vars(r)["id"]
-	var updatedEvent Model.Jobdetails
-	reqBody, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		fmt.Fprintf(w, "Kindly enter data with the event title and description only in order to update")
-	}
-	json.Unmarshal(reqBody, &updatedEvent)
+// func Update(w http.ResponseWriter, r *http.Request) {
+// 	eventID := mux.Vars(r)["id"]
+// 	var updatedEvent Model.Jobdetails
+// 	reqBody, err := ioutil.ReadAll(r.Body)
+// 	if err != nil {
+// 		fmt.Fprintf(w, "Kindly enter data with the event title and description only in order to update")
+// 	}
+// 	json.Unmarshal(reqBody, &updatedEvent)
 
-	for i, singleEvent := range Model.Jobdetails {
-		if singleEvent.ID == eventID {
-			singleEvent.Title = updatedEvent.Title
-			singleEvent.Post = updatedEvent.Post
-			singleEvent.Salary = updatedEvent.Salary
-			singleEvent.Experience = updatedEvent.Experience
-			events := append(events[:i], singleEvent)
-			fmt.Println(events)
-			json.NewEncoder(w).Encode(singleEvent)
-		}
-	}
-}
+// 	for i, singleEvent := range Model.Jobdetails {
+// 		if singleEvent.ID == eventID {
+// 			singleEvent.Title = updatedEvent.Title
+// 			singleEvent.Post = updatedEvent.Post
+// 			singleEvent.Salary = updatedEvent.Salary
+// 			singleEvent.Experience = updatedEvent.Experience
+// 			events := append(events[:i], singleEvent)
+// 			fmt.Println(events)
+// 			json.NewEncoder(w).Encode(singleEvent)
+// 		}
+// 	}
+// }
 
 func Delete(w http.ResponseWriter, r *http.Request) {
 	db := Dbconnect.Openconnection()
